@@ -16,6 +16,8 @@ cxx_compiler_version:
 - '16'
 fmt:
 - '10'
+libboost_devel:
+- '1.84'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 re2:
