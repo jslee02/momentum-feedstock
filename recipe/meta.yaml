@@ -28,11 +28,13 @@ requirements:
     - dispenso
     - drjit-cpp
     - eigen
+    - ezc3d
     - fmt
     - fx-gltf
     - librerun-sdk
     - ms-gsl
     - nlohmann_json
+    - openfbx
     - python  # [linux]
     - re2
     - sophus
