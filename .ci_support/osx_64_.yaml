@@ -21,6 +21,6 @@ macos_machine:
 re2:
 - 2023.09.01
 spdlog:
-- '1.12'
+- '1.13'
 target_platform:
 - osx-64
