@@ -69,6 +69,10 @@ outputs:
     script: build_py.sh  # [unix]
     script: bld_py.bat   # [win]
     requirements:
+      host:
+        - {{ pin_subpackage('momentum-cpp', exact=True) }}
+        - python
+        - numpy
       run:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
         - python
