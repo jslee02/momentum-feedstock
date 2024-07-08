@@ -18,6 +18,7 @@ build:
   ignore_run_exports:
     - ceres-solver
     - drjit-cpp
+    - gflags
     - librerun-sdk
     - openfbx
     - python
@@ -49,6 +50,7 @@ requirements:
     - spdlog
   run:
     - dispenso
+    - gflags
     - libdeflate
     - python  # [linux]
 
