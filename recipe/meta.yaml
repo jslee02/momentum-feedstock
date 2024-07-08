@@ -75,6 +75,7 @@ outputs:
         - libboost-devel
         - cmake
         - ninja  # [not win]
+        - pip
         - python
       host:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
