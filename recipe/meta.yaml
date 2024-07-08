@@ -49,7 +49,6 @@ requirements:
     - spdlog
   run:
     - dispenso
-    - gflags
     - libdeflate
     - python  # [linux]
 
