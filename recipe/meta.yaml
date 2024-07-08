@@ -12,7 +12,8 @@ source:
       - enable-simd.patch
 
 build:
-  number: 5
+  number: 6
+  skip: true  # [py<310]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   ignore_run_exports:
@@ -38,6 +39,7 @@ requirements:
     - dispenso
     - drjit-cpp
     - eigen
+    - ezc3d
     - fmt
     - fx-gltf
     - librerun-sdk
