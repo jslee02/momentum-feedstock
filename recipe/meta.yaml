@@ -41,6 +41,7 @@ requirements:
   run:
     - dispenso
     - gflags
+    - libdeflate
     - python  # [linux]
 
 test:
