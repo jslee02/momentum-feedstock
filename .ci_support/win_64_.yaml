@@ -1,0 +1,18 @@
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2019
+fmt:
+- '10'
+libboost_devel:
+- '1.84'
+re2:
+- 2023.09.01
+spdlog:
+- '1.13'
+target_platform:
+- win-64
