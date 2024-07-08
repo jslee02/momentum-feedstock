@@ -69,8 +69,16 @@ outputs:
     script: build_py.sh  # [unix]
     script: bld_py.bat   # [win]
     requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+        - libboost-devel
+        - cmake
+        - ninja  # [not win]
+        - python
       host:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
+        - pip
         - python
         - numpy
       run:
