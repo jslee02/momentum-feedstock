@@ -20,7 +20,7 @@ build:
     - ceres-solver
     - drjit-cpp
     - gflags
-    - librerun-sdk
+    - librerun-sdk <0.17
     - openfbx
     - python
     - re2
@@ -42,7 +42,7 @@ requirements:
     - ezc3d
     - fmt
     - fx-gltf
-    - librerun-sdk
+    - librerun-sdk <0.17
     - ms-gsl
     - nlohmann_json
     - openfbx
