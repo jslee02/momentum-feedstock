@@ -6,14 +6,15 @@ cmake %SRC_DIR% ^
   -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
   -DBUILD_SHARED_LIBS=OFF ^
   -DMOMENTUM_USE_SYSTEM_RERUN_CPP_SDK=ON ^
-  -DMOMENTUM_BUILD_TESTING=OFF ^
+  -DMOMENTUM_BUILD_TESTING=ON ^
   -DMOMENTUM_BUILD_EXAMPLES=OFF ^
-  -DMOMENTUM_BUILD_PYMOMENTUM=OFF ^
-  -DMOMENTUM_BUILD_WITH_EZC3D=OFF ^
-  -DMOMENTUM_BUILD_WITH_OPENFBX=OFF
+  -DMOMENTUM_BUILD_PYMOMENTUM=OFF
 if errorlevel 1 exit 1
 
 cmake --build build --parallel --config Release
+if errorlevel 1 exit 1
+
+ctest --test-dir build --output-on-failure --build-config Release
 if errorlevel 1 exit 1
 
 cmake --build build --parallel --config Release --target install

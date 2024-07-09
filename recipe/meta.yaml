@@ -8,16 +8,28 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: f37bb8288b873de3b804c367eadeec81c02bff2ceff470f35a9427ed4b426bfe
+    patches:
+      - enable-simd.patch
 
 build:
-  number: 2
+  number: 7
+  skip: true  # [py<310]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
+  ignore_run_exports:
+    - ceres-solver
+    - drjit-cpp
+    - gflags
+    - librerun-sdk <0.17
+    - openfbx
+    - python
+    - re2
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
+    - libboost-devel
     - cmake
     - ninja  # [not win]
     - python
@@ -27,11 +39,13 @@ requirements:
     - dispenso
     - drjit-cpp
     - eigen
+    - ezc3d
     - fmt
     - fx-gltf
     - librerun-sdk <0.17
     - ms-gsl
     - nlohmann_json
+    - openfbx
     - python  # [linux]
     - re2
     - sophus
@@ -39,6 +53,7 @@ requirements:
   run:
     - dispenso
     - gflags
+    - libdeflate
     - python  # [linux]
 
 test:

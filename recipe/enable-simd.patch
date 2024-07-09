@@ -1,0 +1,43 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6ae632..77da7ef 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,6 +28,7 @@ include(cmake/mt_defs.cmake)
+ #===============================================================================
+ 
+ option(BUILD_SHARED_LIBS "Build as shared libraries" ON)
++option(MOMENTUM_ENABLE_SIMD "Enable building with SIMD instructions" ON)
+ option(MOMENTUM_BUILD_IO_FBX "Build with IO FBX" OFF)
+ option(MOMENTUM_BUILD_PYMOMENTUM "Build Python binding" OFF)
+ option(MOMENTUM_BUILD_TESTING "Enable building tests" OFF)
+diff --git a/cmake/mt_defs.cmake b/cmake/mt_defs.cmake
+index 28fa5bb..cef56b0 100644
+--- a/cmake/mt_defs.cmake
++++ b/cmake/mt_defs.cmake
+@@ -145,12 +145,20 @@ function(mt_library)
+     ${type} ${_ARG_PUBLIC_COMPILE_DEFINITIONS}
+     PRIVATE ${_ARG_PRIVATE_COMPILE_DEFINITIONS}
+   )
+-  if(MSVC)
+-    target_compile_options(${_ARG_NAME} ${type} "/arch:SSE2")
+-    target_compile_options(${_ARG_NAME} ${type} "/arch:AVX")
+-    target_compile_options(${_ARG_NAME} ${type} "/arch:AVX2")
+-  else()
+-    target_compile_options(${_ARG_NAME} ${type} -march=native)
++  if(MOMENTUM_ENABLE_SIMD)
++    if(MSVC)
++      target_compile_options(${_ARG_NAME} ${type} "/arch:SSE2")
++      target_compile_options(${_ARG_NAME} ${type} "/arch:AVX")
++      target_compile_options(${_ARG_NAME} ${type} "/arch:AVX2")
++    elseif(APPLE)
++      if(CMAKE_OSX_ARCHITECTURES MATCHES "arm64")
++        target_compile_options(${_ARG_NAME} ${type} -march=armv8-a+simd)
++      else()
++        target_compile_options(${_ARG_NAME} ${type} -march=native)
++      endif()
++    else()
++      target_compile_options(${_ARG_NAME} ${type} -march=native)
++    endif()
+   endif()
+   target_compile_options(${_ARG_NAME}
+     ${type} ${_ARG_PUBLIC_COMPILE_OPTIONS}
