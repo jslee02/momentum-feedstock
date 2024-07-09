@@ -29,7 +29,7 @@ requirements:
     - eigen
     - fmt
     - fx-gltf
-    - librerun-sdk
+    - librerun-sdk <0.17
     - ms-gsl
     - nlohmann_json
     - python  # [linux]
