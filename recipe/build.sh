@@ -13,6 +13,11 @@ else
   MOMENTUM_ENABLE_SIMD=ON
 fi
 
+# Workaround for fx/gltf.h:70:13: error: narrowing conversion of '-1' from 'int' to 'char' [-Wnarrowing]
+if [[ "${target_platform}" == *aarch64 || "${target_platform}" == *ppc64le ]]; then
+  CXXFLAGS="${CXXFLAGS} -Wno-narrowing"
+fi
+
 cmake $SRC_DIR \
   ${CMAKE_ARGS} \
   -G Ninja \
