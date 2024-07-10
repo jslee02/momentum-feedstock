@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.1" %}
+{% set version = "0.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,9 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: f37bb8288b873de3b804c367eadeec81c02bff2ceff470f35a9427ed4b426bfe
-    patches:
-      - enable-simd.patch
 
 build:
-  number: 7
+  number: 0
   skip: true  # [py<310]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
