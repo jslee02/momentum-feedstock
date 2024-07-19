@@ -8,6 +8,8 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 499a995927e5146c5d425c5687ff4ec548a710483bbf1fc2884fcc47907cc544
+    patches:
+      - disable-torch-python.patch
 
 build:
   number: 1
