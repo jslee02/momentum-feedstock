@@ -77,6 +77,22 @@ outputs:
         - python
       host:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
+        - ceres-solver
+        - cli11
+        - dispenso
+        - drjit-cpp
+        - eigen
+        - ezc3d
+        - fmt
+        - fx-gltf
+        - librerun-sdk <0.17
+        - ms-gsl
+        - nlohmann_json
+        - openfbx
+        - python  # [linux]
+        - re2
+        - sophus
+        - spdlog
         - pip
         - python
         - numpy
