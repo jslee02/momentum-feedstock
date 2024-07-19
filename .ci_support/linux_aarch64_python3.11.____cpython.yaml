@@ -22,6 +22,8 @@ fmt:
 - '10'
 libboost_devel:
 - '1.84'
+numpy:
+- '1.23'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -37,3 +39,5 @@ target_platform:
 zip_keys:
 - - c_stdlib_version
   - cdt_name
+- - python
+  - numpy
