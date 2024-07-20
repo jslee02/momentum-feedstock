@@ -30,8 +30,6 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.12.* *_cpython
-pytorch:
-- '2.3'
 re2:
 - 2023.09.01
 spdlog:
