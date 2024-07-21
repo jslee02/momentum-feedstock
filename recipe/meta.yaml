@@ -10,9 +10,10 @@ source:
     sha256: 499a995927e5146c5d425c5687ff4ec548a710483bbf1fc2884fcc47907cc544
     patches:
       - disable-torch-python.patch
+      - disable-simd-for-pymomentum.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<310]
 
 outputs:
