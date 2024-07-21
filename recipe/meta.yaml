@@ -10,9 +10,10 @@ source:
     sha256: 499a995927e5146c5d425c5687ff4ec548a710483bbf1fc2884fcc47907cc544
     patches:
       - disable-torch-python.patch
+      - disable-simd-for-pymomentum.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<310]
 
 outputs:
@@ -69,7 +70,7 @@ outputs:
     script: build_py.sh  # [unix]
     script: bld_py.bat   # [win]
     build:
-      skip: true  # [linux or win or arm64]
+      skip: true  # [linux or win]
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -113,7 +114,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
-        - {{ pin_subpackage('pymomentum', exact=True) }}  # [not linux and not win and not arm64]
+        - {{ pin_subpackage('pymomentum', exact=True) }}  # [not linux and not win]
         - python
         - numpy
     test:
