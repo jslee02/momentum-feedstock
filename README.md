@@ -129,6 +129,8 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-momentum-green.svg)](https://anaconda.org/conda-forge/momentum) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/momentum.svg)](https://anaconda.org/conda-forge/momentum) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/momentum.svg)](https://anaconda.org/conda-forge/momentum) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/momentum.svg)](https://anaconda.org/conda-forge/momentum) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-momentum--cpp-green.svg)](https://anaconda.org/conda-forge/momentum-cpp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/momentum-cpp.svg)](https://anaconda.org/conda-forge/momentum-cpp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/momentum-cpp.svg)](https://anaconda.org/conda-forge/momentum-cpp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/momentum-cpp.svg)](https://anaconda.org/conda-forge/momentum-cpp) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pymomentum-green.svg)](https://anaconda.org/conda-forge/pymomentum) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pymomentum.svg)](https://anaconda.org/conda-forge/pymomentum) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pymomentum.svg)](https://anaconda.org/conda-forge/pymomentum) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pymomentum.svg)](https://anaconda.org/conda-forge/pymomentum) |
 
 Installing momentum
 ===================
@@ -140,16 +142,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `momentum` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `momentum, momentum-cpp, pymomentum` can be installed with `conda`:
 
 ```
-conda install momentum
+conda install momentum momentum-cpp pymomentum
 ```
 
 or with `mamba`:
 
 ```
-mamba install momentum
+mamba install momentum momentum-cpp pymomentum
 ```
 
 It is possible to list all of the versions of `momentum` available on your platform with `conda`:

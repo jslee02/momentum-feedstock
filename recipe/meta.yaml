@@ -8,56 +8,118 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 499a995927e5146c5d425c5687ff4ec548a710483bbf1fc2884fcc47907cc544
+    patches:
+      - disable-torch-python.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
-  run_exports:
-    - {{ pin_subpackage(name, max_pin='x.x') }}
-  ignore_run_exports:
-    - ceres-solver
-    - drjit-cpp
-    - gflags
-    - librerun-sdk <0.17
-    - openfbx
-    - python
-    - re2
 
-requirements:
-  build:
-    - {{ compiler('cxx') }}
-    - {{ stdlib('c') }}
-    - libboost-devel
-    - cmake
-    - ninja  # [not win]
-    - python
-  host:
-    - ceres-solver
-    - cli11
-    - dispenso
-    - drjit-cpp
-    - eigen
-    - ezc3d
-    - fmt
-    - fx-gltf
-    - librerun-sdk <0.17
-    - ms-gsl
-    - nlohmann_json
-    - openfbx
-    - python  # [linux]
-    - re2
-    - sophus
-    - spdlog
-  run:
-    - dispenso
-    - gflags
-    - libdeflate
-    - python  # [linux]
+outputs:
+  - name: momentum-cpp
+    script: build_cpp.sh  # [unix]
+    script: bld_cpp.bat   # [win]
+    build:
+      run_exports:
+        - {{ pin_subpackage('momentum-cpp', max_pin='x.x') }}
+      ignore_run_exports:
+        - ceres-solver
+        - drjit-cpp
+        - gflags
+        - librerun-sdk <0.17
+        - openfbx
+        - python
+        - re2
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+        - libboost-devel
+        - cmake
+        - ninja  # [not win]
+        - python
+      host:
+        - ceres-solver
+        - cli11
+        - dispenso
+        - drjit-cpp
+        - eigen
+        - ezc3d
+        - fmt
+        - fx-gltf
+        - librerun-sdk <0.17
+        - ms-gsl
+        - nlohmann_json
+        - openfbx
+        - python  # [linux]
+        - re2
+        - sophus
+        - spdlog
+      run:
+        - dispenso
+        - gflags
+        - libdeflate
+        - python  # [linux]
+    test:
+      commands:
+        - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
+        - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
 
-test:
-  commands:
-    - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
-    - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
+  - name: pymomentum
+    script: build_py.sh  # [unix]
+    script: bld_py.bat   # [win]
+    build:
+      skip: true  # [linux or win or arm64]
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+        - libboost-devel
+        - cmake
+        - ninja  # [not win]
+        - pip
+        - python
+      host:
+        - {{ pin_subpackage('momentum-cpp', exact=True) }}
+        - ceres-solver
+        - cli11
+        - dispenso
+        - drjit-cpp
+        - eigen
+        - ezc3d
+        - fmt
+        - fx-gltf
+        - librerun-sdk <0.17
+        - ms-gsl
+        - nlohmann_json
+        - openfbx
+        - python  # [linux]
+        - re2
+        - sophus
+        - spdlog
+        - pip
+        - python
+        - pytorch
+        - numpy
+      run:
+        - {{ pin_subpackage('momentum-cpp', exact=True) }}
+        - python
+        - numpy
+    test:
+      imports:
+        - numpy  # TODO
+
+  - name: momentum
+    requirements:
+      run:
+        - {{ pin_subpackage('momentum-cpp', exact=True) }}
+        - {{ pin_subpackage('pymomentum', exact=True) }}  # [not linux and not win and not arm64]
+        - python
+        - numpy
+    test:
+      commands:
+        - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
+        - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
 
 about:
   home: https://facebookincubator.github.io/momentum/
