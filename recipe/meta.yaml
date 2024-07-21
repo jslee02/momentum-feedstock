@@ -12,7 +12,7 @@ source:
       - disable-torch-python.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
 
 outputs:
