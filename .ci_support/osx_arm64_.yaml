@@ -37,7 +37,7 @@ pytorch:
 re2:
 - 2023.09.01
 spdlog:
-- '1.13'
+- '1.14'
 target_platform:
 - osx-arm64
 zip_keys:
