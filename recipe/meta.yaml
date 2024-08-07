@@ -27,7 +27,7 @@ outputs:
         - ceres-solver
         - drjit-cpp
         - gflags
-        - librerun-sdk <0.17
+        - librerun-sdk <0.18
         - openfbx
         - python
         - re2
@@ -48,7 +48,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - librerun-sdk <0.17
+        - librerun-sdk <0.18
         - ms-gsl
         - nlohmann_json
         - openfbx
@@ -90,7 +90,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - librerun-sdk <0.17
+        - librerun-sdk <0.18
         - ms-gsl
         - nlohmann_json
         - openfbx
