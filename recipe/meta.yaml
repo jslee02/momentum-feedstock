@@ -111,7 +111,7 @@ outputs:
         - numpy
     test:
       imports:
-        - numpy  # TODO
+        - geometry
 
   - name: momentum
     requirements:
