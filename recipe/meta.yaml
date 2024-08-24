@@ -9,7 +9,6 @@ source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 29c718243a0c8cd6cb1feb0ff640f8978b389463a7a1cd1646ef65c32a4620cb
     patches:
-      - disable-torch-python.patch
       - disable-simd-for-pymomentum.patch
       - increase-online-qr-test-tol.patch
 
