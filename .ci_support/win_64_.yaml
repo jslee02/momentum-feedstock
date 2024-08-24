@@ -8,8 +8,12 @@ cxx_compiler:
 - vs2019
 fmt:
 - '11'
+libblas:
+- 3.9 *netlib
 libboost_devel:
 - '1.84'
+libcblas:
+- 3.9 *netlib
 numpy:
 - '2.0'
 - '2.0'
