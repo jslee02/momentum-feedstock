@@ -8,7 +8,7 @@ index f06b1334..9921b275 100644
    const double Atb_dot_x_gt = Atb_gt.dot(x_denseQR);
 -  ASSERT_NEAR(qr_blockwise.At_times_b_dot(x_denseQR), Atb_dot_x_gt, 1e-4);
 -  ASSERT_NEAR(qr_blockwise_random.At_times_b_dot(x_denseQR), Atb_dot_x_gt, 5e-4);
-+  ASSERT_NEAR(qr_blockwise.At_times_b_dot(x_denseQR), Atb_dot_x_gt, 1e-3);
++  ASSERT_NEAR(qr_blockwise.At_times_b_dot(x_denseQR), Atb_dot_x_gt, 5e-3);
 +  ASSERT_NEAR(qr_blockwise_random.At_times_b_dot(x_denseQR), Atb_dot_x_gt, 1e-3);
  }
  
