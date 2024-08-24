@@ -11,9 +11,10 @@ source:
     patches:
       - disable-torch-python.patch
       - disable-simd-for-pymomentum.patch
+      - increase-online-qr-test-tol.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
 
 outputs:
@@ -48,6 +49,8 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
+        - libblas  # [win]
+        - libcblas  # [win]
         - librerun-sdk <0.18
         - ms-gsl
         - nlohmann_json
@@ -96,6 +99,7 @@ outputs:
         - openfbx
         - python  # [linux]
         - re2
+        - setuptools
         - sophus
         - spdlog
         - pip
