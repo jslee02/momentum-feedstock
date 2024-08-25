@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.3" %}
+{% set version = "0.1.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 29c718243a0c8cd6cb1feb0ff640f8978b389463a7a1cd1646ef65c32a4620cb
+    sha256: 636ae9073640c2f85f35741bf0d7ba4044697b1f59e22371ce1df41876e8e40f
     patches:
       - disable-simd-for-pymomentum.patch
       - increase-online-qr-test-tol.patch
 
 build:
-  number: 3
+  number: 0
   skip: true  # [py<310]
 
 outputs:
