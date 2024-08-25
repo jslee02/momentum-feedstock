@@ -10,7 +10,6 @@ source:
     sha256: 636ae9073640c2f85f35741bf0d7ba4044697b1f59e22371ce1df41876e8e40f
     patches:
       - disable-simd-for-pymomentum.patch
-      - increase-online-qr-test-tol.patch
 
 build:
   number: 0
@@ -56,7 +55,6 @@ outputs:
         - openfbx
         - python  # [linux]
         - re2
-        - sophus
         - spdlog
       run:
         - dispenso
@@ -100,7 +98,6 @@ outputs:
         - python  # [linux]
         - re2
         - setuptools
-        - sophus
         - spdlog
         - pip
         - python
