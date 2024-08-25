@@ -12,7 +12,7 @@ source:
       - disable-simd-for-pymomentum.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
 
 outputs:
