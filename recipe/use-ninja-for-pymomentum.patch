@@ -11,7 +11,7 @@ index 7861bbd4..e192d8ea 100644
 -        elif self.compiler.compiler_type == "msvc":
 +        if self.compiler.compiler_type == "msvc":
              cmake_args += ["-G Visual Studio 17 2022"]
-+        elif "CMAKE_GENERATOR" not in os.environ:
++        else:
 +            cmake_args += ["-G Ninja"]
  
          if sys.platform.startswith("darwin"):
