@@ -93,6 +93,8 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
+        - libblas  # [win]
+        - libcblas  # [win]
         - librerun-sdk <0.18
         - ms-gsl
         - nlohmann_json
