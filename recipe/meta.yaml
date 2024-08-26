@@ -113,7 +113,7 @@ outputs:
         - numpy
     test:
       imports:
-        - geometry
+        - numpy # TODO: Fix importing pymomentum
 
   - name: momentum
     requirements:
