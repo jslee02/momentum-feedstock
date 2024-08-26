@@ -10,6 +10,7 @@ source:
     sha256: 636ae9073640c2f85f35741bf0d7ba4044697b1f59e22371ce1df41876e8e40f
     patches:
       - disable-simd-for-pymomentum.patch
+      - use-ninja-for-pymomentum.patch
 
 build:
   number: 1
