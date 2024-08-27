@@ -1,0 +1,36 @@
+diff --git a/cmake/mt_defs.cmake b/cmake/mt_defs.cmake
+index 0a2dca67..f62b67a6 100644
+--- a/cmake/mt_defs.cmake
++++ b/cmake/mt_defs.cmake
+@@ -362,4 +362,9 @@ function(mt_python_binding)
+   target_compile_features(${_ARG_NAME} PRIVATE cxx_std_17)
+   target_link_libraries(${_ARG_NAME} PRIVATE ${_ARG_LINK_LIBRARIES})
+   target_compile_options(${_ARG_NAME} PRIVATE ${_ARG_COMPILE_OPTIONS})
++
++  install(TARGETS ${_ARG_NAME}
++    RUNTIME DESTINATION ${Python3_SITEARCH}
++    LIBRARY DESTINATION ${Python3_SITEARCH}
++  )
+ endfunction()
+diff --git a/setup.py b/setup.py
+index beba68cf..5a3d6fbb 100644
+--- a/setup.py
++++ b/setup.py
+@@ -44,6 +44,7 @@ class CMakeBuild(build_ext):
+         cmake_args = [
+             f"-DCMAKE_BUILD_TYPE={cfg}",
+             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
++            f"-DCMAKE_INSTALL_PREFIX={os.environ['CONDA_PREFIX']}",
+             f"-DPYTHON_EXECUTABLE={sys.executable}",
+             "-DBUILD_SHARED_LIBS=OFF",
+             "-DMOMENTUM_BUILD_PYMOMENTUM=ON",
+@@ -77,6 +78,9 @@ class CMakeBuild(build_ext):
+         subprocess.check_call(
+             ["cmake", "--build", "."] + build_args, cwd=self.build_temp
+         )
++        subprocess.check_call(
++            ["cmake", "--build", ".", "--target", "install"], cwd=self.build_temp
++        )
+ 
+         # After building, copy the shared library to pymomentum/
+         target_dir = os.path.join(ROOT_DIR, "pymomentum")

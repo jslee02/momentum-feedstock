@@ -11,6 +11,7 @@ source:
     patches:
       - fix-arm-detect-on-mac.patch
       - use-ninja-for-pymomentum.patch
+      - install-pym-modules.patch
 
 build:
   number: 2
@@ -113,7 +114,9 @@ outputs:
         - numpy
     test:
       imports:
-        - numpy # TODO: Fix importing pymomentum
+        - geometry    # [not osx]
+        - quaternion  # [not osx]
+        - skel_state  # [not osx]
 
   - name: momentum
     requirements:
