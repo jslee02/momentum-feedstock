@@ -14,7 +14,7 @@ source:
       - install-pym-modules.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<310]
 
 outputs:
