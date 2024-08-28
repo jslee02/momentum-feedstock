@@ -8,9 +8,6 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: c9c90baab02b6406b00eaee96ca510de4151abcd55a5d14812a9262cbb04ea97
-    patches:
-      - fix-arm-detect-on-mac.patch
-      - use-ninja-for-pymomentum.patch
 
 build:
   number: 0
