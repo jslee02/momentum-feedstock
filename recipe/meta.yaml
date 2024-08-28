@@ -110,8 +110,11 @@ outputs:
         - numpy
       run:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
-        - python
+        - dispenso
+        - gflags
+        - libdeflate
         - numpy
+        - python
     test:
       imports:
         - geometry    # [not osx]
