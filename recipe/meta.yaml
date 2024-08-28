@@ -11,7 +11,6 @@ source:
     patches:
       - fix-arm-detect-on-mac.patch
       - use-ninja-for-pymomentum.patch
-      - install-pym-modules.patch
 
 build:
   number: 3
