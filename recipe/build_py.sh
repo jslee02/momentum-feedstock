@@ -25,4 +25,4 @@ echo "MERGED_PATH    = $MERGED_PATH"
 # Copy the .so files to the target directory
 mkdir -p "$MERGED_PATH/pymomentum"
 cp pymomentum/*.so "$MERGED_PATH/pymomentum"
-ls $MERGED_PATH/pymomentum"
+ls "$MERGED_PATH/pymomentum"
