@@ -113,9 +113,9 @@ outputs:
         - python
     test:
       imports:
-        - pymomentum.geometry    # [not osx]
-        - pymomentum.quaternion  # [not osx]
-        - pymomentum.skel_state  # [not osx]
+        - pymomentum.geometry
+        - pymomentum.quaternion
+        - pymomentum.skel_state
 
   - name: momentum
     requirements:
