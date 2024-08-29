@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.4" %}
+{% set version = "0.1.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,10 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 636ae9073640c2f85f35741bf0d7ba4044697b1f59e22371ce1df41876e8e40f
-    patches:
-      - fix-arm-detect-on-mac.patch
-      - use-ninja-for-pymomentum.patch
+    sha256: c9c90baab02b6406b00eaee96ca510de4151abcd55a5d14812a9262cbb04ea97
 
 build:
-  number: 4
+  number: 0
   skip: true  # [py<310]
 
 outputs:
