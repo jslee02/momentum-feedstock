@@ -118,6 +118,9 @@ outputs:
         - pymomentum.skel_state
 
   - name: momentum
+    build:
+      run_exports:
+        - {{ pin_subpackage('momentum-cpp', max_pin='x.x') }}
     requirements:
       run:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
