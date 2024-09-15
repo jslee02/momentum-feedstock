@@ -34,7 +34,7 @@ outputs:
         - {{ stdlib('c') }}
         - libboost-devel
         - cmake
-        - gtest
+        - gtest  # [build_platform == target_platform]
         - ninja  # [not win]
         - python
       host:
@@ -78,7 +78,7 @@ outputs:
         - {{ stdlib('c') }}
         - libboost-devel
         - cmake
-        - gtest
+        - gtest  # [build_platform == target_platform]
         - ninja  # [not win]
         - pip
         - pybind11
