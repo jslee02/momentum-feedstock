@@ -34,6 +34,7 @@ outputs:
         - {{ stdlib('c') }}
         - libboost-devel
         - cmake
+        - gtest
         - ninja  # [not win]
         - python
       host:
@@ -77,8 +78,10 @@ outputs:
         - {{ stdlib('c') }}
         - libboost-devel
         - cmake
+        - gtest
         - ninja  # [not win]
         - pip
+        - pybind11
         - python
       host:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
