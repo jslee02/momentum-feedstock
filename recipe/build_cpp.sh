@@ -20,9 +20,9 @@ fi
 
 # Disable use of system-installed GTest libraries when cross-compiling
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
-  MOMENTUM_USE_SYSTEM_GOOGLETEST=OFF
-else
   MOMENTUM_USE_SYSTEM_GOOGLETEST=ON
+else
+  MOMENTUM_USE_SYSTEM_GOOGLETEST=OFF
 fi
 
 cmake $SRC_DIR \
