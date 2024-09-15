@@ -18,6 +18,13 @@ if [[ "${target_platform}" == *aarch64 || "${target_platform}" == *ppc64le ]]; t
   CXXFLAGS="${CXXFLAGS} -Wno-narrowing"
 fi
 
+# Disable use of system-installed GTest libraries when cross-compiling
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+  MOMENTUM_USE_SYSTEM_GOOGLETEST=OFF
+else
+  MOMENTUM_USE_SYSTEM_GOOGLETEST=ON
+fi
+
 cmake $SRC_DIR \
   ${CMAKE_ARGS} \
   -G Ninja \
@@ -28,7 +35,7 @@ cmake $SRC_DIR \
   -DMOMENTUM_BUILD_PYMOMENTUM=OFF \
   -DMOMENTUM_BUILD_TESTING=ON \
   -DMOMENTUM_ENABLE_SIMD=$MOMENTUM_ENABLE_SIMD \
-  -DMOMENTUM_USE_SYSTEM_GOOGLETEST=ON \
+  -DMOMENTUM_USE_SYSTEM_GOOGLETEST=$MOMENTUM_USE_SYSTEM_GOOGLETEST \
   -DMOMENTUM_USE_SYSTEM_PYBIND11=ON \
   -DMOMENTUM_USE_SYSTEM_RERUN_CPP_SDK=ON
 
