@@ -10,7 +10,7 @@ source:
     sha256: 77f9e8a260d19cce7e3ce8b02367da2e5fa04af2e27dd4a508b24229b5784563
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
 
 outputs:
@@ -84,7 +84,6 @@ outputs:
         - pybind11
         - python
       host:
-        - {{ pin_subpackage('momentum-cpp', exact=True) }}
         - ceres-solver
         - cli11
         - dispenso
@@ -108,7 +107,6 @@ outputs:
         - pytorch
         - numpy
       run:
-        - {{ pin_subpackage('momentum-cpp', exact=True) }}
         - dispenso
         - gflags
         - libdeflate
