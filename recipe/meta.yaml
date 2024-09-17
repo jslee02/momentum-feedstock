@@ -84,7 +84,6 @@ outputs:
         - pybind11
         - python
       host:
-        - {{ pin_subpackage('momentum-cpp', exact=True) }}
         - ceres-solver
         - cli11
         - dispenso
@@ -108,7 +107,6 @@ outputs:
         - pytorch
         - numpy
       run:
-        - {{ pin_subpackage('momentum-cpp', exact=True) }}
         - dispenso
         - gflags
         - libdeflate
