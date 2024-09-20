@@ -176,6 +176,11 @@ outputs:
       run:
         - {{ pin_subpackage('pymomentum-cpu', exact=True) }}
         - {{ pin_subpackage('pymomentum-gpu', exact=True) }}
+    test:
+      imports:
+        - pymomentum.geometry
+        - pymomentum.quaternion
+        - pymomentum.skel_state
 
   - name: momentum
     build:
