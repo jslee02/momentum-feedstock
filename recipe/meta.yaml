@@ -65,7 +65,7 @@ outputs:
         - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
         - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
 
-  - name: pymomentum
+  - name: pymomentum-cpu
     script: build_py.sh  # [unix]
     script: bld_py.bat  # [win]
     build:
@@ -170,6 +170,12 @@ outputs:
         - pymomentum.geometry
         - pymomentum.quaternion
         - pymomentum.skel_state
+
+  - name: pymomentum
+    requirements:
+      run:
+        - {{ pin_subpackage('pymomentum-cpu', exact=True) }}
+        - {{ pin_subpackage('pymomentum-gpu', exact=True) }}
 
   - name: momentum
     build:
