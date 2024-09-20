@@ -118,6 +118,59 @@ outputs:
         - pymomentum.quaternion
         - pymomentum.skel_state
 
+  - name: pymomentum-gpu
+    script: build_py.sh  # [unix]
+    script: bld_py.bat  # [win]
+    build:
+      skip: true  # [win]
+      skip: true  # [linux and not x86_64]
+      skip: true  # [osx and x86]
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - {{ stdlib('c') }}
+        - libboost-devel
+        - cmake
+        - gtest  # [build_platform == target_platform]
+        - ninja  # [not win]
+        - pip
+        - pybind11
+        - python
+      host:
+        - ceres-solver
+        - cli11
+        - dispenso
+        - drjit-cpp
+        - eigen
+        - ezc3d
+        - fmt
+        - fx-gltf
+        - libblas  # [win]
+        - libcblas  # [win]
+        - librerun-sdk
+        - ms-gsl
+        - nlohmann_json
+        - openfbx
+        - python  # [linux]
+        - re2
+        - setuptools
+        - spdlog
+        - pip
+        - python
+        - pytorch
+        - numpy
+      run:
+        - dispenso
+        - gflags
+        - libdeflate
+        - numpy
+        - python
+    test:
+      imports:
+        - pymomentum.geometry
+        - pymomentum.quaternion
+        - pymomentum.skel_state
+
   - name: momentum
     build:
       run_exports:
