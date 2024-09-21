@@ -24,6 +24,8 @@ outputs:
     script: build_cpp.sh  # [unix]
     script: bld_cpp.bat  # [win]
     build:
+      skip:
+        - true  # [cuda_compiler_version != "None"]
       run_exports:
         - {{ pin_subpackage('momentum-cpp', max_pin='x.x') }}
       ignore_run_exports:
