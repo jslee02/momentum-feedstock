@@ -78,6 +78,20 @@ outputs:
       build:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
+        - {{ compiler('cuda') }}    # [cuda_compiler_version != "None"]
+        {% if cuda_major >= 12 %}
+        - cuda-driver-dev           # [build_platform != target_platform]
+        - cuda-cudart-dev           # [build_platform != target_platform]
+        - cuda-nvrtc-dev            # [build_platform != target_platform]
+        - cuda-nvtx-dev             # [build_platform != target_platform]
+        - cuda-nvml-dev             # [build_platform != target_platform]
+        - cuda-profiler-api         # [build_platform != target_platform]
+        - libcublas-dev             # [build_platform != target_platform]
+        - libcufft-dev              # [build_platform != target_platform]
+        - libcurand-dev             # [build_platform != target_platform]
+        - libcusolver-dev           # [build_platform != target_platform]
+        - libcusparse-dev           # [build_platform != target_platform]
+        {% endif %}
         - libboost-devel
         - cmake
         - gtest  # [build_platform == target_platform]
@@ -86,6 +100,25 @@ outputs:
         - pybind11
         - python
       host:
+        # GPU requirements
+        - cudnn                                     # [cuda_compiler_version != "None"]
+        - nccl                                      # [cuda_compiler_version != "None"]
+        - magma                                     # [cuda_compiler_version != "None"]
+        - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
+        {% if cuda_major >= 12 %}
+        - cuda-driver-dev
+        - cuda-cudart-dev
+        - cuda-nvrtc-dev
+        - cuda-nvtx-dev
+        - cuda-nvml-dev
+        - cuda-profiler-api
+        - libcublas-dev
+        - libcufft-dev
+        - libcurand-dev
+        - libcusolver-dev
+        - libcusparse-dev
+        {% endif %}
+        # other requirements
         - ceres-solver
         - cli11
         - dispenso
@@ -109,6 +142,8 @@ outputs:
         - pytorch
         - numpy
       run:
+        # GPU requirements without run_exports
+        - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
         - dispenso
         - gflags
         - libdeflate
