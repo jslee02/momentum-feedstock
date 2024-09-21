@@ -172,6 +172,10 @@ outputs:
         - pymomentum.skel_state
 
   - name: pymomentum
+    build:
+      skip: true  # [win]
+      skip: true  # [linux and not x86_64]
+      skip: true  # [osx and x86]
     requirements:
       run:
         - {{ pin_subpackage('pymomentum-cpu', exact=True) }}
