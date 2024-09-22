@@ -154,6 +154,7 @@ outputs:
         - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
         - dispenso
         - gflags
+        - gtest  # [linux64]
         - libdeflate
         - numpy
         - python
