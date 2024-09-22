@@ -135,6 +135,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
+        - gtest
         - libblas  # [win]
         - libcblas  # [win]
         - librerun-sdk
