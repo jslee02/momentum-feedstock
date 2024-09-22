@@ -102,7 +102,7 @@ outputs:
         {% endif %}
         - libboost-devel
         - cmake
-        - gtest  # [build_platform == target_platform]
+        - gtest
         - ninja  # [not win]
         - pip
         - pybind11
