@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.8" %}
+{% set version = "0.1.9" %}
 
 {% if cuda_compiler_version in (None, "None", True, False) %}
 {% set cuda_major = 0 %}
@@ -13,7 +13,7 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 717e3f7f86ade02aedb64ce31c25e9b48b304560753350f64fe3bf0961552493
+    sha256: 6946da765c980361bca7912c7e199067e78659b182301abd5bc71f4d0120ff7e
 
 build:
   number: 0
