@@ -135,7 +135,6 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - gtest
         - libblas  # [win]
         - libcblas  # [win]
         - librerun-sdk
@@ -155,7 +154,6 @@ outputs:
         - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
         - dispenso
         - gflags
-        - gtest
         - libdeflate
         - numpy
         - python
