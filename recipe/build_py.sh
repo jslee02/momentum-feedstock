@@ -22,7 +22,7 @@ echo "PYTHON_SITEARCH= $PYTHON_SITEARCH"
 echo "RELATIVE_PATH  = $RELATIVE_PATH"
 echo "MERGED_PATH    = $MERGED_PATH"
 
-# Copy the .so files to the target directory
+# Copy all .so files to the target directory except those containing 'test' in the filename
 mkdir -p "$MERGED_PATH/pymomentum"
-cp pymomentum/*.so "$MERGED_PATH/pymomentum"
+find pymomentum -name "*.so" ! -name "*test*" -exec cp {} "$MERGED_PATH/pymomentum" \;
 ls "$MERGED_PATH/pymomentum"
