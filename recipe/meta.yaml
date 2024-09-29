@@ -158,9 +158,9 @@ outputs:
         - python
     test:
       imports:
-        - pymomentum.geometry
-        - pymomentum.quaternion
-        - pymomentum.skel_state
+        - pymomentum.geometry    # [not osx or not x86]
+        - pymomentum.quaternion  # [not osx or not x86]
+        - pymomentum.skel_state  # [not osx or not x86]
 
   - name: momentum
     build:
