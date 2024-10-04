@@ -156,6 +156,7 @@ outputs:
         - libdeflate
         - numpy
         - python
+        - pytorch
     test:
       imports:
         - pymomentum.geometry    # [not osx or not x86]
