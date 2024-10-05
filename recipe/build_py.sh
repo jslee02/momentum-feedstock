@@ -24,8 +24,9 @@ echo "CONDA_PREFIX   = $CONDA_PREFIX"
 echo "PYTHON_SITEARCH= $PYTHON_SITEARCH"
 echo "RELATIVE_PATH  = $RELATIVE_PATH"
 echo "MERGED_PATH    = $MERGED_PATH"
+echo "SP_DIR         = $SP_DIR"
 
 # Copy all .so files to the target directory except those containing 'test' in the filename
-mkdir -p "$MERGED_PATH/pymomentum"
-find pymomentum -name "*.so" ! -name "*test*" -exec cp {} "$MERGED_PATH/pymomentum" \;
-ls "$MERGED_PATH/pymomentum"
+mkdir -p "$SP_DIR/pymomentum"
+find pymomentum -name "*.so" ! -name "*test*" -exec cp {} "$SP_DIR/pymomentum" \;
+ls "$SP_DIR/pymomentum"
