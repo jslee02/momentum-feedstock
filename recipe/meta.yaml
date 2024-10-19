@@ -14,6 +14,8 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 2902523a4fd205a26ee1b4e65af786d315cf927b26066b36301db43fb59da5f8
+    patches:
+      - support-gsl4.patch
 
 build:
   number: 0
