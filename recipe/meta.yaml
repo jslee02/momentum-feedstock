@@ -14,8 +14,6 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: dc201f1ecd675a21b81d51c46b7717f60b07a3d4eac0cde729791dda0cdebd20
-    patches:
-      - support-gsl4.patch
 
 build:
   number: 0
@@ -161,9 +159,9 @@ outputs:
         - pytorch
     test:
       imports:
-        - pymomentum.geometry    # [not osx or not x86]
-        - pymomentum.quaternion  # [not osx or not x86]
-        - pymomentum.skel_state  # [not osx or not x86]
+        - pymomentum.geometry
+        - pymomentum.quaternion
+        - pymomentum.skel_state
 
   - name: momentum
     build:
