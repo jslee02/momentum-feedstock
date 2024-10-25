@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.14" %}
+{% set version = "0.1.15" %}
 
 {% if cuda_compiler_version in (None, "None", True, False) %}
 {% set cuda_major = 0 %}
@@ -13,9 +13,7 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 2902523a4fd205a26ee1b4e65af786d315cf927b26066b36301db43fb59da5f8
-    patches:
-      - support-gsl4.patch
+    sha256: dc201f1ecd675a21b81d51c46b7717f60b07a3d4eac0cde729791dda0cdebd20
 
 build:
   number: 0
@@ -161,9 +159,9 @@ outputs:
         - pytorch
     test:
       imports:
-        - pymomentum.geometry    # [not osx or not x86]
-        - pymomentum.quaternion  # [not osx or not x86]
-        - pymomentum.skel_state  # [not osx or not x86]
+        - pymomentum.geometry
+        - pymomentum.quaternion
+        - pymomentum.skel_state
 
   - name: momentum
     build:
