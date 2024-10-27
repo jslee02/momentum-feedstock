@@ -16,7 +16,7 @@ source:
     sha256: 8e6dede11fb1e55eb66b396988bf0b6b154c63cf76c47ecb0acb612acd94041a
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
 
 outputs:
@@ -34,7 +34,6 @@ outputs:
         - gflags
         - librerun-sdk
         - openfbx
-        - python
         - re2
     requirements:
       build:
@@ -44,7 +43,8 @@ outputs:
         - cmake
         - gtest  # [build_platform == target_platform]
         - ninja  # [not win]
-        - python
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
       host:
         - ceres-solver
         - cli11
@@ -60,7 +60,6 @@ outputs:
         - ms-gsl
         - nlohmann_json
         - openfbx
-        - python  # [linux]
         - re2
         - spdlog
       run:
@@ -75,7 +74,6 @@ outputs:
         - ms-gsl
         - nlohmann_json
         - openfbx
-        - python  # [linux]
         - re2
     test:
       commands:
