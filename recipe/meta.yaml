@@ -16,7 +16,7 @@ source:
     sha256: f2371b794b8510607c722ff64c9a0e77a99c7c3389f1e41be981ddc8824657c0
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
 
 outputs:
