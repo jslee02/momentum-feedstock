@@ -4,6 +4,7 @@ set -euxo pipefail
 
 # Set CMake options for pymomentum
 export MOMENTUM_ENABLE_SIMD=OFF
+export MOMENTUM_USE_SYSTEM_PYBIND11=OFF
 
 # Install the current package with verbose output
 python -m pip install . -vv
