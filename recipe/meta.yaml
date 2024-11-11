@@ -64,7 +64,9 @@ outputs:
         - re2
         - spdlog
       run:
-        - cli11
+        - blas-devel  # needed by ceres-solver
+        - ceres-solver
+        - cli11        
         - dispenso
         - drjit-cpp
         - fx-gltf
@@ -74,6 +76,7 @@ outputs:
         - nlohmann_json
         - openfbx
         - python  # [linux]
+        - re2
     test:
       commands:
         - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
