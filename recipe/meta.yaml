@@ -16,7 +16,7 @@ source:
     sha256: 90b1f33c74bb01327deddf9185f9587b792a81505dbefe49159049be39be6ca7
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
 
 outputs:
@@ -65,8 +65,11 @@ outputs:
         - spdlog
       run:
         - dispenso
+        - fx-gltf
         - gflags
         - libdeflate
+        - ms-gsl
+        - nlohmann_json
         - python  # [linux]
     test:
       commands:
