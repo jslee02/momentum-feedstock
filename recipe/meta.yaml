@@ -65,8 +65,11 @@ outputs:
         - spdlog
       run:
         - dispenso
+        - fx-gltf
         - gflags
         - libdeflate
+        - ms-gsl
+        - nlohmann_json
         - python  # [linux]
     test:
       commands:
