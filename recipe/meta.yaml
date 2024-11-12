@@ -16,7 +16,7 @@ source:
     sha256: 90b1f33c74bb01327deddf9185f9587b792a81505dbefe49159049be39be6ca7
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<310]
 
 outputs:
@@ -64,13 +64,19 @@ outputs:
         - re2
         - spdlog
       run:
+        - blas-devel  # needed by ceres-solver
+        - ceres-solver
+        - cli11        
         - dispenso
+        - drjit-cpp
         - fx-gltf
         - gflags
         - libdeflate
         - ms-gsl
         - nlohmann_json
+        - openfbx
         - python  # [linux]
+        - re2
     test:
       commands:
         - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
