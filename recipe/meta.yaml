@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.17" %}
+{% set version = "0.1.18" %}
 
 {% if cuda_compiler_version in (None, "None", True, False) %}
 {% set cuda_major = 0 %}
@@ -13,10 +13,10 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 90b1f33c74bb01327deddf9185f9587b792a81505dbefe49159049be39be6ca7
+    sha256: 8e6dede11fb1e55eb66b396988bf0b6b154c63cf76c47ecb0acb612acd94041a
 
 build:
-  number: 3
+  number: 0
   skip: true  # [py<310]
 
 outputs:
@@ -66,7 +66,7 @@ outputs:
       run:
         - blas-devel  # needed by ceres-solver
         - ceres-solver
-        - cli11        
+        - cli11
         - dispenso
         - drjit-cpp
         - fx-gltf
