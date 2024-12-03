@@ -16,7 +16,7 @@ source:
     sha256: b6b7d0a26d01bd39727a2ae949939de98dc9882fc43edfbd8b1badbf00fabc27
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
 
 outputs:
@@ -54,8 +54,6 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - libblas  # [win]
-        - libcblas  # [win]
         - librerun-sdk
         - ms-gsl
         - nlohmann_json
@@ -63,7 +61,6 @@ outputs:
         - re2
         - spdlog
       run:
-        - blas-devel  # needed by ceres-solver
         - ceres-solver
         - cli11
         - dispenso
@@ -141,8 +138,6 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - libblas  # [win]
-        - libcblas  # [win]
         - librerun-sdk
         - ms-gsl
         - nlohmann_json
