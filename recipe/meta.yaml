@@ -65,6 +65,7 @@ outputs:
         - cli11
         - dispenso
         - drjit-cpp
+        - ezc3d
         - fx-gltf
         - gflags
         - libdeflate
