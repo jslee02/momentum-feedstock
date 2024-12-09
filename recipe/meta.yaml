@@ -1,12 +1,6 @@
 {% set name = "momentum" %}
 {% set version = "0.1.20" %}
 
-{% if cuda_compiler_version in (None, "None", True, False) %}
-{% set cuda_major = 0 %}
-{% else %}
-{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
-{% endif %}
-
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -16,7 +10,7 @@ source:
     sha256: b6b7d0a26d01bd39727a2ae949939de98dc9882fc43edfbd8b1badbf00fabc27
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
 
 outputs:
@@ -86,12 +80,14 @@ outputs:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
       skip: true  # [win]
       skip: true  # [linux and not x86_64]
+      # cuda 11.8 was dropped due to maintenance effort
+      skip: true  # [cuda_compiler_version == "11.8"]
     requirements:
       build:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
         - {{ compiler('cuda') }}    # [cuda_compiler_version != "None"]
-        {% if cuda_major >= 12 %}
+        {% if cuda_compiler_version != "None" %}
         - cuda-driver-dev           # [build_platform != target_platform]
         - cuda-cudart-dev           # [build_platform != target_platform]
         - cuda-nvrtc-dev            # [build_platform != target_platform]
@@ -117,7 +113,7 @@ outputs:
         - nccl                                      # [cuda_compiler_version != "None"]
         - magma                                     # [cuda_compiler_version != "None"]
         - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
-        {% if cuda_major >= 12 %}
+        {% if cuda_compiler_version != "None" %}
         - cuda-driver-dev
         - cuda-cudart-dev
         - cuda-nvrtc-dev
