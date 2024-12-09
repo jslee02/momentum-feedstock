@@ -8,6 +8,10 @@ package:
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 8a74fdcffdd81d7e0a6ab82b202dcf375390b7143bfa5d87c5f1527ec49c4b56
+    patches:
+      - 001-character-test-helpers.patch
+      - 002-remove-pyproject-toml.patch
+      - 003-add-setup-py.patch
 
 build:
   number: 0
@@ -103,9 +107,9 @@ outputs:
         - libcusolver-dev           # [build_platform != target_platform]
         - libcusparse-dev           # [build_platform != target_platform]
         {% endif %}
-        - libboost-devel
         - cmake
         - gtest
+        - libboost-devel
         - ninja  # [not win]
         - pip
         - pybind11
@@ -163,6 +167,7 @@ outputs:
     test:
       imports:
         - pymomentum.geometry
+        - pymomentum.marker_tracking
         - pymomentum.quaternion
         - pymomentum.skel_state
 
