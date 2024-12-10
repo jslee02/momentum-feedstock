@@ -12,6 +12,8 @@ cuda_compiler:
 - nvcc
 cuda_compiler_version:
 - '11.8'
+cudnn:
+- '9'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -22,6 +24,8 @@ fmt:
 - '11'
 libboost_devel:
 - '1.84'
+nccl:
+- '2'
 numpy:
 - '2.0'
 - '2.0'
@@ -34,12 +38,14 @@ python:
 - 3.10.* *_cpython
 - 3.11.* *_cpython
 - 3.12.* *_cpython
+pytorch:
+- '2.5'
 re2:
 - 2024.07.02
 spdlog:
 - '1.14'
 target_platform:
-- linux-ppc64le
+- linux-64
 zip_keys:
 - - cxx_compiler_version
   - cuda_compiler
