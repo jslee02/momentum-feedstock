@@ -46,6 +46,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>linux_aarch64_cuda_compiler_version12.6cxx_compiler_version12</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=22772&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/momentum-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_cuda_compiler_version12.6cxx_compiler_version12" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>linux_aarch64_cuda_compiler_versionNonecxx_compiler_version13</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=22772&branchName=main">
