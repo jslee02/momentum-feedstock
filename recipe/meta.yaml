@@ -10,8 +10,10 @@ source:
     sha256: b6b7d0a26d01bd39727a2ae949939de98dc9882fc43edfbd8b1badbf00fabc27
 
 build:
-  number: 2
+  number: 3
   skip: true  # [py<310]
+  # cuda 11.8 was dropped due to maintenance effort
+  skip: true  # [cuda_compiler_version == "11.8"]
 
 outputs:
   - name: momentum-cpp
@@ -76,18 +78,16 @@ outputs:
     script: build_py.sh  # [unix]
     script: bld_py.bat  # [win]
     build:
-      string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
+      string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}                                                 # [cuda_compiler_version == "None"]
       string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
       skip: true  # [win]
       skip: true  # [linux and not x86_64]
-      # cuda 11.8 was dropped due to maintenance effort
-      skip: true  # [cuda_compiler_version == "11.8"]
     requirements:
       build:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
-        - {{ compiler('cuda') }}    # [cuda_compiler_version != "None"]
         {% if cuda_compiler_version != "None" %}
+        - {{ compiler('cuda') }}
         - cuda-driver-dev           # [build_platform != target_platform]
         - cuda-cudart-dev           # [build_platform != target_platform]
         - cuda-nvrtc-dev            # [build_platform != target_platform]
@@ -109,22 +109,22 @@ outputs:
         - python
       host:
         # GPU requirements
-        - cudnn                                     # [cuda_compiler_version != "None"]
-        - nccl                                      # [cuda_compiler_version != "None"]
-        - magma                                     # [cuda_compiler_version != "None"]
-        - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
         {% if cuda_compiler_version != "None" %}
+        - cuda-version {{ cuda_compiler_version }}
         - cuda-driver-dev
         - cuda-cudart-dev
         - cuda-nvrtc-dev
         - cuda-nvtx-dev
         - cuda-nvml-dev
         - cuda-profiler-api
+        - cudnn
         - libcublas-dev
         - libcufft-dev
         - libcurand-dev
         - libcusolver-dev
         - libcusparse-dev
+        - magma
+        - nccl
         {% endif %}
         # other requirements
         - ceres-solver
