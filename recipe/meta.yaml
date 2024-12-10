@@ -1,5 +1,5 @@
 {% set name = "momentum" %}
-{% set version = "0.1.20" %}
+{% set version = "0.1.21" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,14 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: b6b7d0a26d01bd39727a2ae949939de98dc9882fc43edfbd8b1badbf00fabc27
+    sha256: 8a74fdcffdd81d7e0a6ab82b202dcf375390b7143bfa5d87c5f1527ec49c4b56
+    patches:
+      - 001-character-test-helpers.patch
+      - 002-remove-pyproject-toml.patch
+      - 003-add-setup-py.patch
 
 build:
-  number: 3
+  number: 0
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
@@ -103,9 +107,9 @@ outputs:
         - libcusolver-dev           # [build_platform != target_platform]
         - libcusparse-dev           # [build_platform != target_platform]
         {% endif %}
-        - libboost-devel
         - cmake
         - gtest
+        - libboost-devel
         - ninja  # [not win]
         - pip
         - pybind11
@@ -163,6 +167,7 @@ outputs:
     test:
       imports:
         - pymomentum.geometry
+        - pymomentum.marker_tracking
         - pymomentum.quaternion
         - pymomentum.skel_state
 
