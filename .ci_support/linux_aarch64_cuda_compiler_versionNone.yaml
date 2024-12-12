@@ -24,6 +24,8 @@ fmt:
 - '11'
 libboost_devel:
 - '1.84'
+libtorch:
+- '2.5'
 nccl:
 - '2'
 numpy:
@@ -45,7 +47,7 @@ re2:
 spdlog:
 - '1.14'
 target_platform:
-- linux-64
+- linux-aarch64
 zip_keys:
 - - cxx_compiler_version
   - cuda_compiler

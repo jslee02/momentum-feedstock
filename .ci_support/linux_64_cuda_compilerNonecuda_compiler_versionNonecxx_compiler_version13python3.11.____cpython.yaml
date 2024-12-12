@@ -24,20 +24,18 @@ fmt:
 - '11'
 libboost_devel:
 - '1.84'
+libtorch:
+- '2.5'
 nccl:
 - '2'
 numpy:
-- '2.0'
-- '2.0'
 - '2.0'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
 - 3.11.* *_cpython
-- 3.12.* *_cpython
 pytorch:
 - '2.5'
 re2:
@@ -45,7 +43,7 @@ re2:
 spdlog:
 - '1.14'
 target_platform:
-- linux-aarch64
+- linux-64
 zip_keys:
 - - cxx_compiler_version
   - cuda_compiler
