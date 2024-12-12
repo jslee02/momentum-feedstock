@@ -145,6 +145,7 @@ outputs:
         - fmt
         - fx-gltf
         - librerun-sdk
+        - libtorch
         - ms-gsl
         - nlohmann_json
         - openfbx
@@ -160,11 +161,15 @@ outputs:
         - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
         - ezc3d
         - dispenso
+        - fmt
         - gflags
         - libdeflate
+        - libtorch
         - numpy
         - python
         - pytorch
+        - re2
+        - spdlog
       run_constrained:
         - pymomentum-cpu =={{ version }}  # [cuda_compiler_version == "None"]
         - pymomentum-gpu ==99999999       # [cuda_compiler_version == "None"]
