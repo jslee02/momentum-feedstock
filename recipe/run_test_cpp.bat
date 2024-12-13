@@ -7,5 +7,5 @@ cmake tests ^
   -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
-cmake --build build --parallel --config Release
+cmake --build tests/build --parallel --config Release
 if errorlevel 1 exit 1
