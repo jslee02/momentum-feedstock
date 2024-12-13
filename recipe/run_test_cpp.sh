@@ -9,4 +9,4 @@ cmake tests \
     -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_BUILD_TYPE=Release
 
-cmake --build build --parallel
+cmake --build tests/build --parallel
