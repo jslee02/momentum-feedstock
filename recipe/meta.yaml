@@ -170,11 +170,6 @@ outputs:
         - pytorch
         - re2
         - spdlog
-      run_constrained:
-        - pymomentum-cpu =={{ version }}  # [cuda_compiler_version == "None"]
-        - pymomentum-gpu ==99999999       # [cuda_compiler_version == "None"]
-        - pymomentum-gpu =={{ version }}  # [cuda_compiler_version != "None"]
-        - pymomentum-cpu ==99999999       # [cuda_compiler_version != "None"]
     test:
       imports:
         - pymomentum.geometry
@@ -192,9 +187,6 @@ outputs:
       skip: true  # [win]
       skip: true  # [ppc64le]
       skip: true  # [aarch64 and cuda_compiler_version != "None"]
-      # weigh down cpu implementation and give cuda preference
-      track_features:
-        - pymomentum-cpu                                                                                              # [cuda_compiler_version == "None"]
     requirements:
       run:
         - {{ pin_subpackage("pymomentum", exact=True) }}
