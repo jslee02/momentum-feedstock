@@ -11,7 +11,6 @@ source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 80a624a964ec6a4d16ddacedefccec311e59270f7aa5e3438a5de086465746a4
     patches:
-      - 001-character-test-helpers.patch
       - 002-remove-pyproject-toml.patch
       - 003-add-setup-py.patch
 
