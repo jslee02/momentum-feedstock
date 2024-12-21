@@ -1,7 +1,7 @@
 {% set pymomentum_cpu_gpu = "pymomentum-gpu" %}  # [cuda_compiler_version != "None"]
 {% set pymomentum_cpu_gpu = "pymomentum-cpu" %}  # [cuda_compiler_version == "None"]
 {% set name = "momentum" %}
-{% set version = "0.1.22" %}
+{% set version = "0.1.23" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 80a624a964ec6a4d16ddacedefccec311e59270f7aa5e3438a5de086465746a4
+    sha256: e7ba294e0ffeda05d64e4e8e7f2812efd4ccaa78b7843cab9b4e0542c4acb828
     patches:
       - 002-remove-pyproject-toml.patch
       - 003-add-setup-py.patch
