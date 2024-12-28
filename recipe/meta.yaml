@@ -161,6 +161,7 @@ outputs:
         - openfbx
         - python  # [linux]
         - re2
+        - setuptools
         - spdlog
         - pip
         - python
