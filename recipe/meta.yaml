@@ -200,6 +200,7 @@ outputs:
       skip: true  # [win]
       skip: true  # [ppc64le]
       skip: true  # [aarch64 and cuda_compiler_version != "None"]
+      skip: true  # [linux-64 and cuda_compiler_version != "None"]
     requirements:
       run:
         - {{ pin_subpackage("pymomentum", exact=True) }}
