@@ -144,7 +144,7 @@ outputs:
         - libcusparse-dev
         - magma
         - nccl
-        - nvtx-c
+        - nvtx-c  # [linux and win]
         {% endif %}
         # other requirements
         - ceres-solver
