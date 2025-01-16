@@ -99,6 +99,7 @@ outputs:
       skip: true  # [win]
       skip: true  # [ppc64le]
       skip: true  # [aarch64 and cuda_compiler_version != "None"]
+      skip: true  # [linux-64 and cuda_compiler_version != "None"]
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -136,7 +137,6 @@ outputs:
         - cuda-nvtx-dev
         - cuda-nvml-dev
         - cuda-profiler-api
-        - cuda-toolkit
         - cudnn
         - libcublas-dev
         - libcufft-dev
@@ -145,7 +145,6 @@ outputs:
         - libcusparse-dev
         - magma
         - nccl
-        - nvtx-c  # [linux or win]
         {% endif %}
         # other requirements
         - ceres-solver
