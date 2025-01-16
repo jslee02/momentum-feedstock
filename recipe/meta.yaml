@@ -136,6 +136,7 @@ outputs:
         - cuda-nvtx-dev
         - cuda-nvml-dev
         - cuda-profiler-api
+        - cuda-toolkit
         - cudnn
         - libcublas-dev
         - libcufft-dev
