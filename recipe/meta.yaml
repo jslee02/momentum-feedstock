@@ -63,6 +63,7 @@ outputs:
         - openfbx
         - re2
         - spdlog
+        - urdfdom
       run:
         - ceres-solver
         - cli11
@@ -159,15 +160,15 @@ outputs:
         - libtorch
         - ms-gsl
         - nlohmann_json
+        - numpy
         - openfbx
-        - python  # [linux]
-        - re2
-        - setuptools
-        - spdlog
         - pip
         - python
         - pytorch
-        - numpy
+        - re2
+        - setuptools
+        - spdlog        
+        - urdfdom
       run:
         # GPU requirements without run_exports
         - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
