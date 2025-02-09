@@ -1,7 +1,7 @@
 {% set pymomentum_cpu_gpu = "pymomentum-gpu" %}  # [cuda_compiler_version != "None"]
 {% set pymomentum_cpu_gpu = "pymomentum-cpu" %}  # [cuda_compiler_version == "None"]
 {% set name = "momentum" %}
-{% set version = "0.1.28" %}
+{% set version = "0.1.29" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 2e683322abf2d6b04c2e7a692a0f9b0b41133ff6cb2a5c96b3411ff28835a79a
+    sha256: 6f3d6fc921dc64c91711a537837cdcbfaaab7ad2446613ea5e21296e40bcddb3
     patches:
       - 002-remove-pyproject-toml.patch
       - 003-add-setup-py.patch
@@ -167,7 +167,7 @@ outputs:
         - pytorch
         - re2
         - setuptools
-        - spdlog        
+        - spdlog
         - urdfdom
       run:
         # GPU requirements without run_exports
