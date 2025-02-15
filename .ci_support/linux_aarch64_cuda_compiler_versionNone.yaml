@@ -29,7 +29,7 @@ fmt:
 libboost_devel:
 - '1.84'
 libtorch:
-- '2.5'
+- '2.6'
 nccl:
 - '2'
 numpy:
@@ -45,7 +45,7 @@ python:
 - 3.11.* *_cpython
 - 3.12.* *_cpython
 pytorch:
-- '2.5'
+- '2.6'
 re2:
 - 2024.07.02
 spdlog:
