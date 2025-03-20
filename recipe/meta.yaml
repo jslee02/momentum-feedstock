@@ -191,6 +191,7 @@ outputs:
         - pymomentum.marker_tracking
         - pymomentum.quaternion
         - pymomentum.skel_state
+        - pymomentum.solver
 
   {% set pymomentum_cpu_gpu = "pymomentum-cpu" %}   # [cuda_compiler_version == "None"]
   {% set pymomentum_cpu_gpu = "pymomentum-gpu" %}   # [cuda_compiler_version != "None"]
