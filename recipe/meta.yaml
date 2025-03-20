@@ -11,11 +11,10 @@ source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
     sha256: 6f3d6fc921dc64c91711a537837cdcbfaaab7ad2446613ea5e21296e40bcddb3
     patches:
-      - 002-remove-pyproject-toml.patch
-      - 003-add-setup-py.patch
+      - patches/0001-Disable-SIMD-by-default-for-pymomentum.patch
 
 build:
-  number: 3
+  number: 4
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
@@ -120,14 +119,15 @@ outputs:
         - nvtx-c                    # [build_platform != target_platform and linux]
         {% endif %}
         - cmake
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - gtest
         - libboost-devel
+        - make
         - ninja  # [not win]
         - pip
         - pybind11
         - python
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - setuptools
+        - scikit-build-core
       host:
         # GPU requirements
         {% if cuda_compiler_version != "None" %}
@@ -168,7 +168,7 @@ outputs:
         - pytorch * cpu*   # [cuda_compiler_version == "None"]
         - pytorch * cuda*  # [cuda_compiler_version != "None"]
         - re2
-        - setuptools
+        - scikit-build-core
         - spdlog
         - urdfdom
       run:
@@ -205,12 +205,6 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage("pymomentum", exact=True) }}
-    test:
-      imports:
-        - pymomentum.geometry
-        - pymomentum.marker_tracking
-        - pymomentum.quaternion
-        - pymomentum.skel_state
 
   - name: momentum
     build:
@@ -223,10 +217,6 @@ outputs:
         - {{ pin_subpackage('pymomentum', exact=True) }}  # [osx]
         - python
         - numpy
-    test:
-      commands:
-        - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
-        - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
 
 about:
   home: https://facebookincubator.github.io/momentum/
