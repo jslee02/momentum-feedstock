@@ -34,7 +34,6 @@ outputs:
         - ceres-solver
         - drjit-cpp
         - gflags
-        - librerun-sdk
         - openfbx
         - re2
     requirements:
@@ -70,6 +69,7 @@ outputs:
         - drjit-cpp
         - ezc3d
         - fx-gltf
+        - librerun-sdk
         - gflags
         - libdeflate
         - ms-gsl
