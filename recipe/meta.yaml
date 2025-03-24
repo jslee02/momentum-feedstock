@@ -89,6 +89,7 @@ outputs:
       commands:
         - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
         - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
+        - glb_viewer --help
 
   - name: pymomentum
     script: build_py.sh  # [unix]
