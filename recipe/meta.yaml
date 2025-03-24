@@ -1,7 +1,7 @@
 {% set pymomentum_cpu_gpu = "pymomentum-gpu" %}  # [cuda_compiler_version != "None"]
 {% set pymomentum_cpu_gpu = "pymomentum-cpu" %}  # [cuda_compiler_version == "None"]
 {% set name = "momentum" %}
-{% set version = "0.1.31" %}
+{% set version = "0.1.32" %}
 
 package:
   name: {{ name|lower }}
@@ -9,9 +9,10 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: db4bc14e67f15c067d717a0b5e37508adc2ecda1a1e2491f38f9029cb08349c3
+    sha256: c7184efbb971e4f1bdd6f3ebd5095de400fa888dc3db155060cdae58f735ebe1
     patches:
       - patches/0001-Disable-SIMD-by-default-for-pymomentum.patch
+      - patches/0002-Install-rerun-libraries.patch
 
 build:
   number: 0
@@ -34,7 +35,6 @@ outputs:
         - ceres-solver
         - drjit-cpp
         - gflags
-        - librerun-sdk
         - openfbx
         - re2
     requirements:
@@ -70,6 +70,7 @@ outputs:
         - drjit-cpp
         - ezc3d
         - fx-gltf
+        - librerun-sdk
         - gflags
         - libdeflate
         - ms-gsl
@@ -89,6 +90,7 @@ outputs:
       commands:
         - test -f $PREFIX/lib/cmake/momentum/momentum-config.cmake  # [not win]
         - if not exist %PREFIX%\\Library\\lib\\cmake\\momentum\\momentum-config.cmake exit 1  # [win]
+        - glb_viewer --help
 
   - name: pymomentum
     script: build_py.sh  # [unix]
