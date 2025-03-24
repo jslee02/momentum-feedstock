@@ -1,0 +1,32 @@
+From d7db116363ca8d0cbdb523bb9c985e09013249fc Mon Sep 17 00:00:00 2001
+From: Jeongseok Lee <jeongseok@meta.com>
+Date: Sun, 23 Mar 2025 20:24:40 -0700
+Subject: [PATCH] Install rerun libraries
+
+---
+ CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 40ce3873..093731cc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -496,7 +496,6 @@ mt_library(
+   PUBLIC_LINK_LIBRARIES
+     Eigen3::Eigen
+     rerun_sdk
+-  NO_INSTALL
+ )
+ 
+ mt_library(
+@@ -511,7 +510,6 @@ mt_library(
+   PRIVATE_LINK_LIBRARIES
+     rerun_eigen_adapters
+     axel
+-  NO_INSTALL
+ )
+ 
+ #===============================================================================
+-- 
+2.20.1.windows.1
+
