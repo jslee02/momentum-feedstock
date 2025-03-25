@@ -1,7 +1,7 @@
 {% set pymomentum_cpu_gpu = "pymomentum-gpu" %}  # [cuda_compiler_version != "None"]
 {% set pymomentum_cpu_gpu = "pymomentum-cpu" %}  # [cuda_compiler_version == "None"]
 {% set name = "momentum" %}
-{% set version = "0.1.32" %}
+{% set version = "0.1.33" %}
 
 package:
   name: {{ name|lower }}
@@ -9,18 +9,16 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: c7184efbb971e4f1bdd6f3ebd5095de400fa888dc3db155060cdae58f735ebe1
+    sha256: 7a4ccd3c24b32fd1820e1bd6e45bd9591885b8ba77a94da597928e6d1a85f9ca
     patches:
-      - patches/0001-Disable-SIMD-by-default-for-pymomentum.patch
-      - patches/0002-Install-rerun-libraries.patch
+      - patches/0001-Use-Python3-Module-instead-of-Python3_LIBRARIES.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
-  skip: true  # [ppc64le and cuda_compiler_version != "None"]
-  skip: true  # [win and cuda_compiler_version != "None"]
+  skip: true  # [aarch64 or ppc64le]
 
 outputs:
   - name: momentum-cpp
@@ -98,27 +96,27 @@ outputs:
     build:
       string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
       string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
-      skip: true  # [win]
-      skip: true  # [ppc64le]
-      skip: true  # [aarch64 and cuda_compiler_version != "None"]
+      skip: true  # [win and cuda_compiler_version != "None"]
     requirements:
       build:
         - {{ compiler('cxx') }}
         - {{ stdlib('c') }}
         {% if cuda_compiler_version != "None" %}
         - {{ compiler('cuda') }}
-        - cuda-driver-dev           # [build_platform != target_platform]
+        - cuda-driver-dev           # [build_platform != target_platform and linux]
         - cuda-cudart-dev           # [build_platform != target_platform]
-        - cuda-nvrtc-dev            # [build_platform != target_platform]
+        - cuda-nvcc
+        - cuda-nvrtc-dev
         - cuda-nvtx-dev
         - cuda-nvml-dev             # [build_platform != target_platform]
         - cuda-profiler-api         # [build_platform != target_platform]
+        - cuda-toolkit
         - libcublas-dev             # [build_platform != target_platform]
         - libcufft-dev              # [build_platform != target_platform]
         - libcurand-dev             # [build_platform != target_platform]
         - libcusolver-dev           # [build_platform != target_platform]
         - libcusparse-dev           # [build_platform != target_platform]
-        - nvtx-c                    # [build_platform != target_platform and linux]
+        - nvtx-c
         {% endif %}
         - cmake
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
@@ -129,17 +127,20 @@ outputs:
         - pip
         - pybind11
         - python
+        - pytorch
         - scikit-build-core
       host:
         # GPU requirements
         {% if cuda_compiler_version != "None" %}
         - cuda-version {{ cuda_compiler_version }}
-        - cuda-driver-dev
+        - cuda-driver-dev    # [linux]
         - cuda-cudart-dev
+        - cuda-nvcc
         - cuda-nvrtc-dev
         - cuda-nvtx-dev
         - cuda-nvml-dev
         - cuda-profiler-api
+        - cuda-toolkit
         - cudnn
         - libcublas-dev
         - libcufft-dev
@@ -147,8 +148,8 @@ outputs:
         - libcusolver-dev
         - libcusparse-dev
         - magma
-        - nccl
-        - nvtx-c                    # [linux]
+        - nccl               # [linux]
+        - nvtx-c
         {% endif %}
         # other requirements
         - ceres-solver
@@ -167,8 +168,7 @@ outputs:
         - openfbx
         - pip
         - python
-        - pytorch * cpu*   # [cuda_compiler_version == "None"]
-        - pytorch * cuda*  # [cuda_compiler_version != "None"]
+        - pytorch
         - re2
         - scikit-build-core
         - spdlog
@@ -181,8 +181,7 @@ outputs:
         - fmt
         - gflags
         - libdeflate
-        - pytorch * cpu*   # [cuda_compiler_version == "None"]
-        - pytorch * cuda*  # [cuda_compiler_version != "None"]
+        - pytorch
         - numpy
         - python
         - re2
@@ -202,9 +201,7 @@ outputs:
       string: cpu_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
       string: cuda{{ cuda_compiler_version | replace('.', '') }}_py{{ CONDA_PY }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
       detect_binary_files_with_prefix: false
-      skip: true  # [win]
-      skip: true  # [ppc64le]
-      skip: true  # [aarch64 and cuda_compiler_version != "None"]
+      skip: true  # [win and cuda_compiler_version != "None"]
     requirements:
       run:
         - {{ pin_subpackage("pymomentum", exact=True) }}
@@ -216,10 +213,10 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
-        - {{ pin_subpackage('pymomentum', exact=True) }}  # [linux and not ppc64le]
+        - {{ pin_subpackage('pymomentum', exact=True) }}  # [linux]
         - {{ pin_subpackage('pymomentum', exact=True) }}  # [osx]
+        - {{ pin_subpackage('pymomentum', exact=True) }}  # [win and cuda_compiler_version == "None"]
         - python
-        - numpy
 
 about:
   home: https://facebookincubator.github.io/momentum/
