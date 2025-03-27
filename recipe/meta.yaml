@@ -103,19 +103,19 @@ outputs:
         - {{ stdlib('c') }}
         {% if cuda_compiler_version != "None" %}
         - {{ compiler('cuda') }}
-        - cuda-driver-dev           # [build_platform != target_platform and linux]
-        - cuda-cudart-dev           # [build_platform != target_platform]
-        - cuda-nvcc
-        - cuda-nvrtc-dev
-        - cuda-nvtx-dev
-        - cuda-nvml-dev             # [build_platform != target_platform]
-        - cuda-profiler-api         # [build_platform != target_platform]
+        # - cuda-driver-dev           # [build_platform != target_platform and linux]
+        # - cuda-cudart-dev           # [build_platform != target_platform]
+        # - cuda-nvcc
+        # - cuda-nvrtc-dev
+        # - cuda-nvtx-dev
+        # - cuda-nvml-dev             # [build_platform != target_platform]
+        # - cuda-profiler-api         # [build_platform != target_platform]
         - cuda-toolkit
-        - libcublas-dev             # [build_platform != target_platform]
-        - libcufft-dev              # [build_platform != target_platform]
-        - libcurand-dev             # [build_platform != target_platform]
-        - libcusolver-dev           # [build_platform != target_platform]
-        - libcusparse-dev           # [build_platform != target_platform]
+        # - libcublas-dev             # [build_platform != target_platform]
+        # - libcufft-dev              # [build_platform != target_platform]
+        # - libcurand-dev             # [build_platform != target_platform]
+        # - libcusolver-dev           # [build_platform != target_platform]
+        # - libcusparse-dev           # [build_platform != target_platform]
         - nvtx-c
         {% endif %}
         - cmake
@@ -133,22 +133,22 @@ outputs:
         # GPU requirements
         {% if cuda_compiler_version != "None" %}
         - cuda-version {{ cuda_compiler_version }}
-        - cuda-driver-dev    # [linux]
-        - cuda-cudart-dev
-        - cuda-nvcc
-        - cuda-nvrtc-dev
-        - cuda-nvtx-dev
-        - cuda-nvml-dev
-        - cuda-profiler-api
+        # - cuda-driver-dev    # [linux]
+        # - cuda-cudart-dev
+        # - cuda-nvcc
+        # - cuda-nvrtc-dev
+        # - cuda-nvtx-dev
+        # - cuda-nvml-dev
+        # - cuda-profiler-api
         - cuda-toolkit
-        - cudnn
-        - libcublas-dev
-        - libcufft-dev
-        - libcurand-dev
-        - libcusolver-dev
-        - libcusparse-dev
-        - magma
-        - nccl               # [linux]
+        # - cudnn
+        # - libcublas-dev
+        # - libcufft-dev
+        # - libcurand-dev
+        # - libcusolver-dev
+        # - libcusparse-dev
+        # - magma
+        # - nccl               # [linux]
         - nvtx-c
         {% endif %}
         # other requirements
@@ -175,7 +175,7 @@ outputs:
         - urdfdom
       run:
         # GPU requirements without run_exports
-        - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
+        # - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
         - ezc3d
         - dispenso
         - fmt
