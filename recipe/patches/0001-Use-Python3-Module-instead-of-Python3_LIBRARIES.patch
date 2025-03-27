@@ -1,0 +1,34 @@
+From 5cc06970540709b02a6ea3d32599f0cb65d11c69 Mon Sep 17 00:00:00 2001
+From: Jeongseok Lee <jeongseok@meta.com>
+Date: Wed, 26 Mar 2025 20:47:20 -0700
+Subject: [PATCH] Use Python3::Module instead of Python3_LIBRARIES
+
+---
+ pymomentum/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pymomentum/CMakeLists.txt b/pymomentum/CMakeLists.txt
+index cfe32dfa..ffc0a16d 100644
+--- a/pymomentum/CMakeLists.txt
++++ b/pymomentum/CMakeLists.txt
+@@ -73,7 +73,7 @@ mt_library(
+   PUBLIC_LINK_LIBRARIES
+     Eigen3::Eigen
+     pybind11::pybind11_headers
+-    ${python_deps}
++    Python3::Module
+     ${TORCH_LIBRARIES}
+   PRIVATE_LINK_LIBRARIES
+     momentum
+@@ -236,7 +236,7 @@ if(MOMENTUM_BUILD_TESTING)
+       character_test_helpers
+       tensor_ik
+       tensor_utility
+-      ${python_deps}
++      Python3::Module
+   )
+ endif()
+ 
+-- 
+2.39.5 (Apple Git-154)
+
