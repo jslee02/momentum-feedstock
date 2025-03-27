@@ -16,8 +16,6 @@ cuda_compiler:
 - None
 cuda_compiler_version:
 - None
-cudnn:
-- '9'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -30,8 +28,6 @@ libboost_devel:
 - '1.84'
 libtorch:
 - '2.6'
-nccl:
-- '2'
 numpy:
 - '2.0'
 - '2.0'
