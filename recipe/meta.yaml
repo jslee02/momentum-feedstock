@@ -18,7 +18,6 @@ build:
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
-  skip: true  # [aarch64 or ppc64le]
 
 outputs:
   - name: momentum-cpp
