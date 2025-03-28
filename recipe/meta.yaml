@@ -14,11 +14,10 @@ source:
       - patches/0001-Use-Python3-Module-instead-of-Python3_LIBRARIES.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
-  skip: true  # [aarch64 or ppc64le]
 
 outputs:
   - name: momentum-cpp
@@ -103,19 +102,7 @@ outputs:
         - {{ stdlib('c') }}
         {% if cuda_compiler_version != "None" %}
         - {{ compiler('cuda') }}
-        - cuda-driver-dev           # [build_platform != target_platform and linux]
-        - cuda-cudart-dev           # [build_platform != target_platform]
-        - cuda-nvcc
-        - cuda-nvrtc-dev
-        - cuda-nvtx-dev
-        - cuda-nvml-dev             # [build_platform != target_platform]
-        - cuda-profiler-api         # [build_platform != target_platform]
         - cuda-toolkit
-        - libcublas-dev             # [build_platform != target_platform]
-        - libcufft-dev              # [build_platform != target_platform]
-        - libcurand-dev             # [build_platform != target_platform]
-        - libcusolver-dev           # [build_platform != target_platform]
-        - libcusparse-dev           # [build_platform != target_platform]
         - nvtx-c
         {% endif %}
         - cmake
@@ -133,22 +120,7 @@ outputs:
         # GPU requirements
         {% if cuda_compiler_version != "None" %}
         - cuda-version {{ cuda_compiler_version }}
-        - cuda-driver-dev    # [linux]
-        - cuda-cudart-dev
-        - cuda-nvcc
-        - cuda-nvrtc-dev
-        - cuda-nvtx-dev
-        - cuda-nvml-dev
-        - cuda-profiler-api
         - cuda-toolkit
-        - cudnn
-        - libcublas-dev
-        - libcufft-dev
-        - libcurand-dev
-        - libcusolver-dev
-        - libcusparse-dev
-        - magma
-        - nccl               # [linux]
         - nvtx-c
         {% endif %}
         # other requirements
@@ -174,8 +146,6 @@ outputs:
         - spdlog
         - urdfdom
       run:
-        # GPU requirements without run_exports
-        - {{ pin_compatible('cudnn') }}  # [cuda_compiler_version != "None"]
         - ezc3d
         - dispenso
         - fmt
@@ -213,9 +183,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('momentum-cpp', exact=True) }}
-        - {{ pin_subpackage('pymomentum', exact=True) }}  # [linux]
-        - {{ pin_subpackage('pymomentum', exact=True) }}  # [osx]
-        - {{ pin_subpackage('pymomentum', exact=True) }}  # [win and cuda_compiler_version == "None"]
+        - {{ pin_subpackage('pymomentum', exact=True) }}
         - python
 
 about:
