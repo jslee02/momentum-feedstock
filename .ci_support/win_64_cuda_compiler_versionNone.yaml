@@ -13,7 +13,7 @@ cuda_compiler_version:
 cxx_compiler:
 - vs2019
 fmt:
-- '11'
+- '11.1'
 libboost_devel:
 - '1.84'
 libtorch:
