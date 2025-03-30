@@ -1,7 +1,7 @@
 {% set pymomentum_cpu_gpu = "pymomentum-gpu" %}  # [cuda_compiler_version != "None"]
 {% set pymomentum_cpu_gpu = "pymomentum-cpu" %}  # [cuda_compiler_version == "None"]
 {% set name = "momentum" %}
-{% set version = "0.1.33" %}
+{% set version = "0.1.34" %}
 
 package:
   name: {{ name|lower }}
@@ -9,12 +9,12 @@ package:
 
 source:
   - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
-    sha256: 7a4ccd3c24b32fd1820e1bd6e45bd9591885b8ba77a94da597928e6d1a85f9ca
+    sha256: b013deffdcf8a45f2adc27e96532696bedbe99762506bae2d09f9deca82e5b84
     patches:
       - patches/0001-Use-Python3-Module-instead-of-Python3_LIBRARIES.patch
 
 build:
-  number: 3
+  number: 0
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
@@ -53,7 +53,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - librerun-sdk
+        - librerun-sdk <0.22
         - ms-gsl
         - nlohmann_json
         - openfbx
@@ -67,7 +67,7 @@ outputs:
         - drjit-cpp
         - ezc3d
         - fx-gltf
-        - librerun-sdk
+        - librerun-sdk <0.22
         - gflags
         - libdeflate
         - ms-gsl
@@ -132,7 +132,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - librerun-sdk
+        - librerun-sdk <0.22
         - libtorch
         - ms-gsl
         - nlohmann_json
