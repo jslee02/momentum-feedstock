@@ -8,6 +8,7 @@ if [[ "${target_platform}" == *aarch64 || "${target_platform}" == *ppc64le ]]; t
 fi
 
 export CMAKE_ARGS="$CMAKE_ARGS \
+    -DMOMENTUM_ENABLE_SIMD=OFF \
     -DMOMENTUM_USE_SYSTEM_PYBIND11=OFF \
     -DMOMENTUM_USE_SYSTEM_RERUN_CPP_SDK=ON"
 
@@ -15,10 +16,6 @@ if [[ "${target_platform}" != "${build_platform}" ]]; then
   export CMAKE_ARGS="$CMAKE_ARGS -DMOMENTUM_USE_SYSTEM_GOOGLETEST=OFF"
 else
   export CMAKE_ARGS="$CMAKE_ARGS -DMOMENTUM_USE_SYSTEM_GOOGLETEST=ON"
-fi
-
-if [[ "${target_platform}" == *aarch64 || "${target_platform}" == *ppc64le ]]; then
-  export CMAKE_ARGS="$CMAKE_ARGS -DMOMENTUM_ENABLE_SIMD=OFF"
 fi
 
 python -m pip install --no-deps --ignore-installed . -vv --prefix=$PREFIX
