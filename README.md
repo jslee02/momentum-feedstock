@@ -3,13 +3,13 @@ About momentum-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/momentum-feedstock/blob/main/LICENSE.txt)
 
-Home: https://facebookincubator.github.io/momentum/
+Home: https://facebookresearch.github.io/momentum/
 
 Package license: MIT
 
 Summary: A library for human kinematic motion and numerical optimization solvers to apply human motion
 
-Development: https://github.com/facebookincubator/momentum
+Development: https://github.com/facebookresearch/momentum
 
 A library for human kinematic motion and numerical optimization solvers to apply human motion
 
