@@ -8,13 +8,13 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/facebookincubator/momentum/archive/v{{ version }}.tar.gz
+  - url: https://github.com/facebookresearch/momentum/archive/v{{ version }}.tar.gz
     sha256: b013deffdcf8a45f2adc27e96532696bedbe99762506bae2d09f9deca82e5b84
     patches:
       - patches/0001-Use-Python3-Module-instead-of-Python3_LIBRARIES.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [py<310]
   # cuda 11.8 was dropped due to maintenance effort
   skip: true  # [cuda_compiler_version == "11.8"]
@@ -187,13 +187,13 @@ outputs:
         - python
 
 about:
-  home: https://facebookincubator.github.io/momentum/
+  home: https://facebookresearch.github.io/momentum/
   summary: 'A library for human kinematic motion and numerical optimization solvers to apply human motion'
   description: |
     A library for human kinematic motion and numerical optimization solvers to apply human motion
   license: MIT
   license_file: LICENSE
-  dev_url: https://github.com/facebookincubator/momentum
+  dev_url: https://github.com/facebookresearch/momentum
 
 extra:
   recipe-maintainers:
