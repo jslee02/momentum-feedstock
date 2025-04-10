@@ -53,7 +53,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - librerun-sdk <0.22
+        - librerun-sdk {{ rerun_version }}
         - ms-gsl
         - nlohmann_json
         - openfbx
@@ -67,7 +67,7 @@ outputs:
         - drjit-cpp
         - ezc3d
         - fx-gltf
-        - librerun-sdk <0.22
+        - librerun-sdk {{ rerun_version }}
         - gflags
         - libdeflate
         - ms-gsl
@@ -132,7 +132,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
-        - librerun-sdk <0.22
+        - librerun-sdk {{ rerun_version }}
         - libtorch
         - ms-gsl
         - nlohmann_json
