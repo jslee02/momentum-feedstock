@@ -48,6 +48,8 @@ pytorch:
 - '2.6'
 re2:
 - 2024.07.02
+rerun_version:
+- '0.22'
 spdlog:
 - '1.15'
 target_platform:
