@@ -69,6 +69,7 @@ outputs:
         - drjit-cpp
         - ezc3d
         - fx-gltf
+        - indicators
         - librerun-sdk {{ rerun_version }}
         - gflags
         - libdeflate
@@ -154,6 +155,7 @@ outputs:
         - dispenso
         - fmt
         - gflags
+        - indicators
         - libdeflate
         - pytorch
         - numpy
