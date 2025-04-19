@@ -53,6 +53,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
+        - indicators
         - librerun-sdk {{ rerun_version }}
         - ms-gsl
         - nlohmann_json
@@ -132,6 +133,7 @@ outputs:
         - ezc3d
         - fmt
         - fx-gltf
+        - indicators
         - librerun-sdk {{ rerun_version }}
         - libtorch
         - ms-gsl
