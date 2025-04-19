@@ -41,6 +41,7 @@ outputs:
         - libboost-devel
         - cmake
         - gtest  # [build_platform == target_platform]
+        - indicators
         - ninja  # [not win]
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
@@ -109,6 +110,7 @@ outputs:
         - cmake
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - gtest
+        - indicators
         - libboost-devel
         - make
         - ninja  # [not win]
